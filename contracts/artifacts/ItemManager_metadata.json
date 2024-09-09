@@ -1,0 +1,191 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "_itemIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_step",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "_itemAddress",
+						"type": "address"
+					}
+				],
+				"name": "SupplyChainStep",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "_owner",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_identifier",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_itemPrice",
+						"type": "uint256"
+					}
+				],
+				"name": "createItem",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "isOwner",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "items",
+				"outputs": [
+					{
+						"internalType": "contract Item",
+						"name": "_item",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_identifier",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_itemPrice",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum ItemManager.SupplyChainState",
+						"name": "_state",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_itemIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "triggerDelivery",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_itemIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "triggerPayment",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"supplychain_main/contracts/ItemManager.sol": "ItemManager"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"supplychain_main/contracts/Item.sol": {
+			"keccak256": "0xa506e3f025aa7d986201622c485a98c4b0a5d0be9b4068b57cdcd351fe5b11b4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7cfb8c0340594f54371109975e2c0ac7b3912af1da311909470a305a3434b2b5",
+				"dweb:/ipfs/QmdBsMXEusRfYWFouEsEJFE2gSf6QEUEgMzKYpdghY89GG"
+			]
+		},
+		"supplychain_main/contracts/ItemManager.sol": {
+			"keccak256": "0x21d5f7718768af350cb70e172ff18d6932cf396288bb09749b600428f82bfe8d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b0ee8eefb7175760af02a03bc5afebbd692d2e7384c830c2a87ad47fd6d60629",
+				"dweb:/ipfs/QmUdGrca2188dSepqDvmw8GjTtzfm7DHVW8uPCweiDuMDF"
+			]
+		},
+		"supplychain_main/contracts/Ownable.sol": {
+			"keccak256": "0xb559dea3b80f14fac250a3b94bba7419dff50ddcc94c02a19133e539a3dcebb3",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://bc8f11ebbbe0b5d11c4525ef41909f7f40ec9353022d4eb753c0cae8d857e0e3",
+				"dweb:/ipfs/QmbBMeHPgtX4eJtpVVcbdjqNNSLSesyk279651GKCA5oTF"
+			]
+		}
+	},
+	"version": 1
+}
