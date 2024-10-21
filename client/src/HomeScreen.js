@@ -53,31 +53,31 @@ const HomeScreen = (props) => {
       </header>
       <main>
         <section style={styles.section}>
-          <h2>Tạo Mục Mới</h2>
+          <h2>Tạo sản phẩm</h2>
           <div className="form-group">
-            <label htmlFor="cost">Giá (Wei):</label>
+            <label htmlFor="cost">Giá (ETH):</label>
             <input
               type="text"
               name="cost"
               id="cost"
               onChange={props.handleInputChange}
-              placeholder="Nhập giá (Wei)"
+              placeholder="Nhập giá (ETH)"
               style={styles.input}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="itemName">Tên Mục:</label>
+            <label htmlFor="itemName">Tên sản phẩm:</label>
             <input
               type="text"
               name="itemName"
               id="itemName"
               onChange={props.handleInputChange}
-              placeholder="Nhập tên mục"
+              placeholder="Nhập tên sản phẩm"
               style={styles.input}
             />
           </div>
           <button type="button" onClick={handleSubmit} style={styles.button}>
-            Tạo Mới
+            Tạo 
           </button>
         </section>
       </main>

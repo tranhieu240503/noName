@@ -4,6 +4,7 @@
     "create-react-app": "^5.0.1",
     "firebase": "^10.13.1",
     "react-router-dom": "^6.26.1",
+    "styled-components": "^6.1.13",
     "web3": "^4.12.1"
   },
   "devDependencies": {

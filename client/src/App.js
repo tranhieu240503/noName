@@ -23,6 +23,10 @@ class App extends Component {
     avatarUrl: '',
     accounts: [],
     web3: null,
+    reviews: {},
+  ratings: {},
+  currentReview: '',
+  currentRating: 0,
     itemManager: null
   };
 
@@ -270,7 +274,60 @@ class App extends Component {
       console.error('Lỗi khi giao hàng:', error);
       alert('Lỗi khi giao hàng: ' + error.message);
     }
-  };          
+  }; 
+  
+  handleReviewChange = (event) => {
+    this.setState({ currentReview: event.target.value });
+  };
+  
+  handleRatingChange = (event) => {
+    this.setState({ currentRating: event.target.value });
+  };
+  
+  // Hàm để lưu đánh giá sản phẩm
+// Hàm để lưu đánh giá sản phẩm
+handleReview = async (itemIndex, review) => {
+  const { reviews, items } = this.state;
+
+  if (!review) return alert("Vui lòng nhập nhận xét");
+
+  // Cập nhật reviews trong state
+  const updatedReviews = { ...reviews, [itemIndex]: [...(reviews[itemIndex] || []), review] };
+  this.setState({ reviews: updatedReviews });
+
+  // Tìm sản phẩm và giữ nguyên các thông tin khác
+  const updatedItems = items.map(item =>
+    item.id === itemIndex ? { ...item, reviews: updatedReviews[itemIndex] } : item
+  );
+  this.setState({ items: updatedItems });
+
+  // Lưu vào Firebase, giữ nguyên các thông tin hiện có của sản phẩm
+  const itemRef = ref(database, 'items/' + itemIndex);
+  const itemToUpdate = items.find(item => item.id === itemIndex);
+  await set(itemRef, { ...itemToUpdate, reviews: updatedReviews[itemIndex] });
+};
+
+// Hàm để lưu đánh giá số sao sản phẩm
+handleRating = async (itemIndex) => {
+  const { currentRating, ratings, items } = this.state;
+
+  if (currentRating === 0) return alert("Vui lòng nhập số sao hợp lệ");
+
+  const updatedRatings = { ...ratings, [itemIndex]: currentRating };
+  this.setState({ ratings: updatedRatings, currentRating: 0 });
+
+  // Cập nhật thông tin rating trong state mà giữ nguyên thông tin khác của sản phẩm
+  const updatedItems = items.map(item =>
+    item.id === itemIndex ? { ...item, rating: updatedRatings[itemIndex] } : item
+  );
+  this.setState({ items: updatedItems });
+
+  // Lưu vào Firebase, giữ nguyên các thông tin hiện có của sản phẩm
+  const itemRef = ref(database, 'items/' + itemIndex);
+  const itemToUpdate = items.find(item => item.id === itemIndex);
+  await set(itemRef, { ...itemToUpdate, rating: updatedRatings[itemIndex] });
+};
+
 
   render() {
     const { redirectToPurchase, userAddress, avatarUrl } = this.state;
@@ -313,6 +370,7 @@ class App extends Component {
                   <PurchaseScreen 
                     items={this.state.items}
                     handleBuy={this.handleBuy}
+                    handleReview={this.handleReview}
                     userAddress={this.state.userAddress}
                   />
                 } 
